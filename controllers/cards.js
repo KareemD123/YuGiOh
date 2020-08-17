@@ -1,7 +1,11 @@
 const Cards = require("../models/cards");
 
-module.exports = {};
+module.exports = {
+  fetchApi,
+};
 
-fetch("https://jsonplaceholder.typicode.com/users")
-  .then((response) => response.json())
-  .then((users) => console.log(users));
+function fetchApi() {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => response.json())
+    .then((users) => console.log(users));
+}
