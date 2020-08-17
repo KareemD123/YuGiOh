@@ -5,12 +5,15 @@ module.exports = {
   requestApi,
 };
 
-function requestApi() {
+function requestApi(req, res, next) {
   request("https://db.ygoprodeck.com/api/v7/cardinfo.php", function (
     err,
     req,
     body
   ) {
+    // console.log(req);
+    // console.log(body);
+    // console.log(res);
     // console.log(JSON.parse(req));
     let req2 = JSON.parse(req.body);
     let req3 = req2.data;
@@ -29,7 +32,8 @@ function requestApi() {
       });
       // console.log(name.name);
     });
-    req.render("index", Cards);
+    res.render("index", Cards);
     // console.log(req2.data);
+    console.log("hello");
   });
 }
