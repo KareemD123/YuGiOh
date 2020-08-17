@@ -13,4 +13,4 @@ const cards = new Schema({
 
 //Type vs Race
 
-module.exports = mongoose.model("Cards", cards);
+module.exports = mongoose.model("cards", cards);
