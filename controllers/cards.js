@@ -29,7 +29,8 @@ function requestApi() {
       });
       // console.log(name.name);
     });
-    res3.render("index", Cards);
+
     // console.log(res2.data);
   });
+  res.render("index", Cards);
 }
