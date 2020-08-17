@@ -23,7 +23,7 @@ function requestApi(req, res) {
       //     res.render("show", { cards });
       //   } else {
       req3.forEach(function (name) {
-        console.log(name);
+        // console.log(name);
         Cards.create({
           name: name.name,
           id: name.id,
@@ -33,9 +33,7 @@ function requestApi(req, res) {
           level: name.level,
         });
       });
-      Cards.find({}, function (err, cards) {
-        res.render("show", { cards });
-      });
+      res.render("index");
     }
   );
 }
@@ -53,7 +51,7 @@ function requestApi(req, res) {
 function showCards(req, res) {
   console.log("hello2");
   Cards.find({}, function (err, cards) {
-    console.log(cards);
+    // console.log(cards);
     res.render("show.ejs", { cards });
   });
 }
