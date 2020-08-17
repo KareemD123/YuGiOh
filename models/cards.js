@@ -11,14 +11,6 @@ const cards = new Schema({
 });
 
 const myCollection = new Schema({
-  // username:[userLogin]
-  // googleId: [userLogin]
-  name: String,
-  id: String,
-  level: Number,
-  atk: Number,
-  def: Number,
-  Type: String,
   cards: [cards],
 });
 
