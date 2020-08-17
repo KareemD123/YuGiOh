@@ -8,17 +8,17 @@ module.exports = {
 function requestApi() {
   request("https://db.ygoprodeck.com/api/v7/cardinfo.php", function (
     err,
-    res,
+    req,
     body
   ) {
-    // console.log(JSON.parse(res));
-    let res2 = JSON.parse(res.body);
-    let res3 = res2.data;
-    // res3.forEach(function (name) {
+    // console.log(JSON.parse(req));
+    let req2 = JSON.parse(req.body);
+    let req3 = req2.data;
+    // req3.forEach(function (name) {
     //   console.log(name.name);
     // });
 
-    res3.forEach(function (name) {
+    req3.forEach(function (name) {
       Cards.create({
         name: name.name,
         id: name.id,
@@ -29,7 +29,7 @@ function requestApi() {
       });
       // console.log(name.name);
     });
-    res.render("index", Cards);
-    // console.log(res2.data);
+    req.render("index", Cards);
+    // console.log(req2.data);
   });
 }
