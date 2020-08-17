@@ -10,11 +10,6 @@ const cards = new Schema({
   Type: String,
 });
 
-const myCollection = new Schema({
-  cards: [cards],
-});
-
 //Type vs Race
 
 module.exports = mongoose.model("Cards", cards);
-module.exports = mongoose.model("MyCollection", myCollection);

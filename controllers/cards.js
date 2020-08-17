@@ -6,20 +6,24 @@ module.exports = {
   showCards,
 };
 
-function requestApi(req, res, next) {
+function requestApi(req, res) {
   request(
     "https://db.ygoprodeck.com/api/v7/cardinfo.php?level=4&attribute=water&sort=atk",
     function (err, req, body) {
-      // console.log(req);
-      // console.log(body);
-      // console.log(res);
-      // console.log(JSON.parse(req));
+      if (err) return console.log(err);
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
       // req3.forEach(function (name) {
       //   console.log(name.name);
       // });
+      // Cards.find({}, function (err, cards) {
+      //   console.log(req3);
+      //   if (err) console.log(err);
+      //   if (cards) {
+      //     res.render("show", { cards });
+      //   } else {
       req3.forEach(function (name) {
+        console.log(name);
         Cards.create({
           name: name.name,
           id: name.id,
@@ -28,18 +32,28 @@ function requestApi(req, res, next) {
           Type: name.race,
           level: name.level,
         });
-        // console.log(name.name);
       });
-      res.render("index");
-      // console.log(req2.data);
-      console.log("hello");
+      Cards.find({}, function (err, cards) {
+        res.render("show", { cards });
+      });
     }
   );
 }
 
+//         }
+//       });
+//     }
+//   );
+// }
+
+// res.render("show", {cards});
+// console.log(req2.data);
+// console.log(name.name);
+
 function showCards(req, res) {
   console.log("hello2");
   Cards.find({}, function (err, cards) {
-    res.render("/show.ejs", { name, id, atk, def, type, level });
+    console.log(cards);
+    res.render("show.ejs", { cards });
   });
 }
