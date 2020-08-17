@@ -5,7 +5,7 @@ module.exports = {
 };
 
 function fetchApi() {
-  fetch("https://jsonplaceholder.typicode.com/users")
+  fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Dark Magician")
     .then((response) => response.json())
-    .then((users) => console.log(users));
+    .then((cards) => console.log(cards));
 }
