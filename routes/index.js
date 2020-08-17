@@ -10,5 +10,6 @@ const request = require("request");
 
 router.get("/", cardsCtrl.requestApi);
 router.get("/show", cardsCtrl.showCards);
+router.get("/save/:cardName", cardsCtrl.saveCards);
 
 module.exports = router;

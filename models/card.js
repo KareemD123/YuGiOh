@@ -8,6 +8,7 @@ const cards = new Schema({
   atk: Number,
   def: Number,
   Type: String,
+  image: String,
 });
 
 //Type vs Race

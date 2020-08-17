@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var cardsCtrl = require("../controllers/cards");
+var cardsCtrl = require("../controllers/collections");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {

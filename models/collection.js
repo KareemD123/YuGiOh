@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const myCollection = new Schema({
-  cards: [cards],
+  cards: [card],
 });
 
 //Type vs Race

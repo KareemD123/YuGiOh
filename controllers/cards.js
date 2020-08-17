@@ -1,9 +1,10 @@
-const Cards = require("../models/cards");
+const Cards = require("../models/card");
 const request = require("request");
 
 module.exports = {
   requestApi,
   showCards,
+  saveCards,
 };
 
 function requestApi(req, res) {
@@ -13,6 +14,7 @@ function requestApi(req, res) {
       if (err) return console.log(err);
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
+      // console.log(req3);
       // req3.forEach(function (name) {
       //   console.log(name.name);
       // });
@@ -23,7 +25,9 @@ function requestApi(req, res) {
       //     res.render("show", { cards });
       //   } else {
       req3.forEach(function (name) {
-        // console.log(name);
+        // console.log(name.card_images);
+        let imageurl = name.card_images;
+        let textimageurl = imageurl[0].image_url;
         Cards.create({
           name: name.name,
           id: name.id,
@@ -31,6 +35,7 @@ function requestApi(req, res) {
           def: name.def,
           Type: name.race,
           level: name.level,
+          image: name.card_images[0].image_url,
         });
       });
       res.render("index");
@@ -55,3 +60,5 @@ function showCards(req, res) {
     res.render("show.ejs", { cards });
   });
 }
+
+function saveCards(req, res) {}
