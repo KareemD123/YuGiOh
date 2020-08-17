@@ -3,6 +3,7 @@ const request = require("request");
 
 module.exports = {
   requestApi,
+  showCards,
 };
 
 function requestApi(req, res, next) {
@@ -32,8 +33,15 @@ function requestApi(req, res, next) {
       });
       // console.log(name.name);
     });
-    res.render("index", Cards);
+    // res.render("index", { Cards });
     // console.log(req2.data);
     console.log("hello");
+  });
+}
+
+function showCards(req, res) {
+  console.log("hello2");
+  Cards.find({}, function (err, cards) {
+    res.render("show", { name, id, atk, def, type, level });
   });
 }

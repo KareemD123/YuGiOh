@@ -9,5 +9,6 @@ const request = require("request");
 // });
 
 router.get("/", cardsCtrl.requestApi);
+router.get("/show", cardsCtrl.showCards);
 
 module.exports = router;
