@@ -17,6 +17,17 @@ function requestApi() {
     res3.forEach(function (name) {
       console.log(name.name);
     });
+
+    res3.forEach(function (name) {
+      name: name.name;
+      id: name.id;
+      atk: name.atk;
+      def: name.def;
+      Type: name.race;
+      level: name.level;
+      console.log(name.name);
+    });
+
     // console.log(res2.data);
   });
 }
