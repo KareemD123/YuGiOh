@@ -8,6 +8,6 @@ const request = require("request");
 //   res.render("index", { title: "Express" });
 // });
 
-router.get("/", cardsCtrl.fetchApi);
+router.get("/", cardsCtrl.requestApi);
 
 module.exports = router;

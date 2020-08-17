@@ -1,7 +1,7 @@
 const Cards = require("../models/cards");
 
 module.exports = {
-  fetchApi,
+  requestApi,
 };
 
 function requestApi() {
