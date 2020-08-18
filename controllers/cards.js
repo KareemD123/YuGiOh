@@ -54,6 +54,10 @@ function requestApi(req, res) {
 function showCards(req, res) {
   console.log("hello2");
   Cards.find({}, function (err, cards) {
-    res.render("show.ejs", { cards });
+    if (err) {
+      return err;
+    } else {
+      res.render("show.ejs", { cards });
+    }
   });
 }
