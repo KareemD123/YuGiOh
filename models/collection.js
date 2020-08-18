@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const Cards = require("../models/card");
 
 const myCollection = new Schema({
-  cards: [Cards],
+  cards: String,
 });
 
 //Type vs Race
