@@ -9,6 +9,7 @@ module.exports = {
 
 function showMyCollection(req, res) {
   Collection.find({}, function (err, cards) {
+    if (err) return err;
     // console.log(cards);
     res.render("cards/mycollection.ejs", { cards });
   });
