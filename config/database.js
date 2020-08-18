@@ -9,7 +9,7 @@ var mongoose = require("mongoose");
 //   }
 // );
 
-mongoose.connect("mongodb:/localhost/YuGiOh", {
+mongoose.connect("mongodb://localhost/YuGiOh", {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,

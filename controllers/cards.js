@@ -40,7 +40,7 @@ function requestApi(req, res, next) {
           level: name.level,
           image: name.card_images[0].image_url,
         });
-        res.render("home.ejs", { title: "Hello!" });
+        res.render("home");
       });
     }
   );
