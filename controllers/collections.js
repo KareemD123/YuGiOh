@@ -15,6 +15,12 @@ function showMyCollection(req, res) {
   });
 }
 
+// function showMyCollection(req, res) {
+//   Collection.find({}, function (err, cards) {
+//     res.render("cards/mycollection.ejs", { cards });
+//   });
+// }
+
 // function saveCards(req, res) {
 //   let collection = new MyCollection(req.body);
 //   MyCollection.save();

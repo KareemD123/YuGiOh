@@ -51,11 +51,9 @@ function requestApi(req, res) {
 // console.log(req2.data);
 // console.log(name.name);
 
-function showCards(err, req, res) {
+function showCards(req, res) {
   console.log("hello2");
-
   Cards.find({}, function (err, cards) {
-    // console.log(cards);
     res.render("show.ejs", { cards });
   });
 }
