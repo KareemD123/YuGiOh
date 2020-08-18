@@ -16,7 +16,7 @@ function showMyCollection(req, res) {
 }
 
 function saveCards(req, res) {
-  console.log(req.params.id);
+  console.log(req.params.type);
   // console.log(req.params.name);
   // console.log(req.params.atk);
   // console.log(req.params.def);
