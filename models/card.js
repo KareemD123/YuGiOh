@@ -24,7 +24,7 @@ const myCollection = new Schema({
 
 const userLogin = new Schema({
   username: String,
-  password: String,
+  email: String,
   googleId: String,
   collectionId: { type: Schema.Types.ObjectId, ref: "myCollection" },
   cardcollection: [myCollection],
