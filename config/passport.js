@@ -1,12 +1,14 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const cards = require("../models/card");
+console.log(process.env.GOOGLE_CLIENT_ID);
 passport.use(
   new GoogleStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-      callbackURL: process.env.GOOGLE_CALLBACK,
+      clientID:
+        "1019942543490-4js73hh0ifro1atk5jvnng8qtrfpk6o0.apps.googleusercontent.com",
+      clientSecret: "hpIa8QETPz4NEScdNKWCRudG",
+      callbackURL: "http://localhost:3000/",
     },
     function (accessToken, refreshToken, profile, cb) {
       cards.findOne({ googleId: profile.id }, function (err, cards) {
