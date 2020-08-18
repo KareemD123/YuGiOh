@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Cards = require("../models/card");
+const cards = require("../models/card");
 
 const myCollection = new Schema({
-  cards: String,
+  mycollection: String,
 });
 
 //Type vs Race
