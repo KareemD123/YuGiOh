@@ -12,7 +12,7 @@ const request = require("request");
 
 router.get("/", cardsCtrl.requestApi);
 router.get("/show", cardsCtrl.showCards);
-router.get("/save/:c.id/", collectionsCtrl.saveCards);
+router.get("/save", collectionsCtrl.saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 
 module.exports = router;
