@@ -11,8 +11,8 @@ const request = require("request");
 // });
 
 router.get("/", cardsCtrl.requestApi);
-router.get("/show", cardsCtrl.showCards);
-router.get("/save/:type", collectionsCtrl.saveCards);
+router.get("/cards", cardsCtrl.showAllCards);
+router.get("/save/:id", collectionsCtrl.saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 
 module.exports = router;

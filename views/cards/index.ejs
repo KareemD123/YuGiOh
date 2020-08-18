@@ -17,9 +17,7 @@
       <td><%= c.level %></td> -->
       <td>
         <img src=" <%= c.image %>" />
-        <form method="GET" action="/save/?<%= c.type %>">
-          <button type="submit">Save Card to your Collection</button>
-        </form>
+        <a href="/save/<%= c.id%>"> Save to your Collection</a>
       </td>
     </tr>
     <% }); %>

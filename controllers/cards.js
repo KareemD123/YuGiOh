@@ -1,9 +1,11 @@
 const Cards = require("../models/card");
 const request = require("request");
+const Collection = require("../models/card");
+const UserLogin = require("../models/card");
 
 module.exports = {
   requestApi,
-  showCards,
+  showAllCards,
 };
 
 function requestApi(req, res, next) {
@@ -38,7 +40,7 @@ function requestApi(req, res, next) {
           level: name.level,
           image: name.card_images[0].image_url,
         });
-        res.render("index.ejs", { title: "Hello!" });
+        res.render("home.ejs", { title: "Hello!" });
       });
     }
   );
@@ -54,13 +56,13 @@ function requestApi(req, res, next) {
 // console.log(req2.data);
 // console.log(name.name);
 
-function showCards(req, res) {
+function showAllCards(req, res) {
   console.log("hello2");
   Cards.find({}, function (err, cards) {
     if (err) {
       return err;
     } else {
-      res.render("show.ejs", { cards });
+      res.render("cards/index.ejs", { cards });
     }
   });
 }
