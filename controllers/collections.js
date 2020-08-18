@@ -16,16 +16,22 @@ function showMyCollection(req, res) {
 }
 
 function saveCards(req, res) {
-  console.log(req.body);
+  console.log(req.params.id);
+  console.log(req.params.name);
+  console.log(req.params.atk);
+  console.log(req.params.def);
+  console.log(req.params.type);
+  console.log(req.params.level);
   // let collection = new MyCollection(req.body);
   // MyCollection.save();
+
   Collection.find({}, function (err, cards) {
     if (err) {
       return err;
     } else {
       console.log("im the error");
       console.log(cards);
-      res.render("/cards/mycollection.ejs", { cards });
+      res.render("cards/mycollection", { cards });
     }
   });
 }
