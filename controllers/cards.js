@@ -6,10 +6,13 @@ module.exports = {
   showCards,
 };
 
-function requestApi(req, res) {
+function requestApi(req, res, next) {
   request(
     "https://db.ygoprodeck.com/api/v7/cardinfo.php?level=4&attribute=water&sort=atk",
     function (err, req, body) {
+      if (err) {
+        return err;
+      }
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
       // console.log(req3);
@@ -35,8 +38,8 @@ function requestApi(req, res) {
           level: name.level,
           image: name.card_images[0].image_url,
         });
+        res.render("index.ejs", { title: "Hello!" });
       });
-      res.render("index");
     }
   );
 }

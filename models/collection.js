@@ -3,7 +3,13 @@ const Schema = mongoose.Schema;
 const cards = require("../models/card");
 
 const myCollection = new Schema({
-  mycollection: String,
+  name: String,
+  id: String,
+  level: Number,
+  atk: Number,
+  def: Number,
+  Type: String,
+  image: String,
 });
 
 //Type vs Race
