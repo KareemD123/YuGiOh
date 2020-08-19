@@ -7,8 +7,22 @@
   <body>
     <h1>My Collection</h1>
     <p>These are the cards you have saved in your collection!</p>
-   
-
+    <% cards.forEach(function(c){ %>
+      <form method="POST" action="/save" >
+        <input name="name" value="<%= c.name %>" type="hidden">
+        <input name="id" value="<%= c.id %>" type="hidden">
+        <input name="image" value="<%= c.image %>" type="hidden">
+        <input name="atk" value="<%= c.atk %>" type="hidden">
+        <input name="def" value="<%= c.def %>" type="hidden">
+        <input name="type" value="<%= c.type %>" type="hidden">
+        <input name="level" value="<%= c.level %>" type="hidden">
+        <div id="image">
+          <img src="<%= c.image %>" />
+          <button type="Submit">Save to your Collection</button>
+        </div>
+      </form>
+      <% }); %>
+  
     </div>
     <!-- </td>
     </tr> -->

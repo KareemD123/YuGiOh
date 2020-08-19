@@ -114,10 +114,16 @@ function showAllCards(req, res) {
 }
 
 async function saveCards(req, res) {
-  console.log("this is the reqid: " + req.body);
+  console.log("this is the reqid: " + req.body.name);
+  let cards;
   try {
-    let collection = await Collection.find({ id: 0 });
-    let card_obj = [];
+    let collection = await Collection.findOne({ id: 0 });
+    // if (Collection.empty) {
+    //   console.log("collection is empty");
+    //   // Collection.create({ id: 0 });
+    // }
+    console.log(collection);
+    // let card_obj = [];
     card_obj = {
       name: req.body.name,
       id: req.body.id,
@@ -127,19 +133,19 @@ async function saveCards(req, res) {
       level: req.body.level,
       image: req.body.image,
     };
-    for (i = 0; i < 7; i++) {
-      collection.cards.push(card_obj[i]);
-    }
-    collection.find({}, function (err, collection) {
-      console.log("this is my collection: " + collection);
-    });
-
+    collection.cards.push(card_obj);
+    console.log("i ran");
     let save = await collection.save();
+    cards = collection.cards;
   } catch (error) {
     console.log("error=" + error);
   }
-  res.render("cards/mycollection.ejs");
+  res.render("cards/mycollection.ejs", { cards });
 }
+
+// collection.find({}, function (err, collection) {
+//   console.log("this is my collection: " + collection);
+// });
 
 // module.exports = {
 //   Cards,
