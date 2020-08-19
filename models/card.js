@@ -34,11 +34,7 @@ function addSubSchema(req, res, next) {
   const newCollectionEntry = newCollectionModel.cards.push({
     name: "Hello",
   });
-  newCollectionModel.save((err, data) => {
-    console.log("this is the data: " + data);
-    console.log(err);
-    if (err) return err;
-  });
+
   console.log(req.params);
   let req4 = JSON.stringify(req.body);
   let req5 = req4.data;
@@ -47,7 +43,13 @@ function addSubSchema(req, res, next) {
   console.log("this is new collectionmodel " + newCollectionModel);
   let newColModel = [newCollectionModel];
   console.log("this is newcol model 0: " + newColModel[0]);
-  res.render("cards/mycollection.ejs", { newColModel });
+
+  newCollectionModel.save((err, data) => {
+    console.log("this is the data: " + data);
+    console.log(err);
+    res.render("cards/mycollection.ejs", { newColModel });
+    if (err) return err;
+  });
 }
 
 function requestApi(req, res, next) {
