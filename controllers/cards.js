@@ -1,7 +1,7 @@
 const Cards = require("../models/card");
 const request = require("request");
-const Collection = require("../models/card");
-const UserLogin = require("../models/card");
+// const Collection = require("../models/card");
+// const UserLogin = require("../models/card");
 
 module.exports = {
   requestApi,
@@ -18,24 +18,28 @@ function requestApi(req, res, next) {
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
       req3.forEach(function (name) {
-        // console.log(name.card_images);
         let imageurl = name.card_images;
         let textimageurl = imageurl[0].image_url;
-        Cards.create({
-          name: name.name,
-          id: name.id,
-          atk: name.atk,
-          def: name.def,
-          Type: name.race,
-          level: name.level,
-          image: name.card_images[0].image_url,
-        });
-        res.render("home", {
-          students,
-          user: req.user,
-          name: req.query.name,
-          sortKey,
-        });
+        // let newCard = new cardModel();
+        Cards.create(
+          {
+            name: name.name,
+            id: name.id,
+            atk: name.atk,
+            def: name.def,
+            Type: name.race,
+            level: name.level,
+            image: name.card_images[0].image_url,
+          },
+          function (err) {
+            res.render("home");
+          }
+        );
+
+        // students,
+        // user: req.user,
+        // name: req.query.name,
+        // sortKey,
       });
     }
   );

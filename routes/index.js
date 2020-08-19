@@ -12,8 +12,8 @@ const request = require("request");
 //   res.render("index", { title: "Express" });
 // });
 router.get("/save/:id", cardModel.addSubSchema);
-router.get("/", cardsCtrl.requestApi);
-router.get("/cards", cardsCtrl.showAllCards);
+router.get("/", cardModel.requestApi);
+router.get("/cards", cardModel.showAllCards);
 // router.get("/save/:id", collectionsCtrl.showMyCollection); //saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 

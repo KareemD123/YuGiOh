@@ -16,10 +16,10 @@
       <td><%= c.type %></td>
       <td><%= c.level %></td> -->
     <!-- <td> -->
-    <form method="POST" action="/save/<%= c.id %>">
+    <form method="GET" action="/save/<%= c._id %>">
       <div id="image">
         <img src="<%= c.image %>" />
-        <a href="/save/<%= c.id %>"> Save to your Collection</a>
+        <button type="submit">Save to your Collection</button>
       </div>
     </form>
 
