@@ -13,6 +13,7 @@ const cardSchema = new Schema({
 });
 
 const myCollection = new Schema({
+  id: { type: Number, default: 0 },
   name: String,
   cards: [cardSchema],
 });
@@ -25,9 +26,13 @@ const userLogin = new Schema({
   cardcollection: [myCollection],
 });
 
-const Cards = mongoose.model("Cards", cardSchema);
-const collectionModel = mongoose.model("MyCollection", myCollection);
+// module.exports = mongoose.model("mySeparateCollection", mySeparateCollection);
+
+// const Cards = mongoose.model("Cards", cardSchema);
+const Collection = mongoose.model("MyCollection", myCollection);
 //Type vs Race
+// let mySepCol = mongoose.model("mySepCol", mySeparateCollection);
+// let mySepCol2 = new mySepCol();
 
 function addSubSchema(req, res, next) {
   const newCollectionModel = new collectionModel();
@@ -57,51 +62,83 @@ function requestApi(req, res, next) {
     "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip",
     function (err, req, body) {
       console.log("1: " + err);
-      if (err) {
-        return err;
-      }
+      // if (err) {
+      //   return req.next(err);
+      // }
       console.log("2: " + err);
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
+      let displayCards = [];
       req3.forEach(function (name) {
         let imageurl = name.card_images;
         let textimageurl = imageurl[0].image_url;
         // let newCard = new cardModel();
-        Cards.create(
-          {
-            name: name.name,
-            id: name.id,
-            atk: name.atk,
-            def: name.def,
-            Type: name.race,
-            level: name.level,
-            image: name.card_images[0].image_url,
-          },
-          function (err) {
-            console.log("3: " + err);
-            res.render("home.ejs");
-          }
-        );
+        // console.log("this is the name: " + name.name);
 
-        // students,
-        // user: req.user,
-        // name: req.query.name,
-        // sortKey,
+        incomingCard = {
+          name: name.name,
+          id: name.id,
+          atk: name.atk,
+          def: name.def,
+          Type: name.race,
+          level: name.level,
+          image: name.card_images[0].image_url,
+        };
+        // console.log(displayCards);
+        displayCards.push(incomingCard);
+        // let arrayDisplayCards = [displayCards];
       });
+      res.render("cards/index.ejs", { displayCards });
     }
   );
 }
+
+// function (err) {
+//   console.log("3: " + err);
+//   res.render("home.ejs");
+// students,
+// user: req.user,
+// name: req.query.name,
+// sortKey,
 
 function showAllCards(req, res) {
   console.log("hello2");
   Cards.find({}, function (err, cards) {
     if (err) {
-      return err;
+      return req.next(err);
     } else {
       // console.log(cards);
       res.render("cards/index.ejs", { cards });
     }
   });
+}
+
+async function saveCards(req, res) {
+  console.log("this is the reqid: " + req.body);
+  try {
+    let collection = await Collection.find({ id: 0 });
+    let card_obj = [];
+    card_obj = {
+      name: req.body.name,
+      id: req.body.id,
+      atk: req.body.atk,
+      def: req.body.def,
+      Type: req.body.race,
+      level: req.body.level,
+      image: req.body.image,
+    };
+    for (i = 0; i < 7; i++) {
+      collection.cards.push(card_obj[i]);
+    }
+    collection.find({}, function (err, collection) {
+      console.log("this is my collection: " + collection);
+    });
+
+    let save = await collection.save();
+  } catch (error) {
+    console.log("error=" + error);
+  }
+  res.render("cards/mycollection.ejs");
 }
 
 // module.exports = {
@@ -111,6 +148,8 @@ module.exports = {
   addSubSchema,
   showAllCards,
   requestApi,
+  saveCards,
+  Collection,
 };
 // module.exports = mongoose.model("MyCollection", myCollection);
 // module.exports = mongoose.model("UserLogin", userLogin);

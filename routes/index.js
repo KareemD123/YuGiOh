@@ -11,10 +11,10 @@ const request = require("request");
 // router.get("/", function (req, res, next) {
 //   res.render("index", { title: "Express" });
 // });
-router.get("/save/:id", cardModel.addSubSchema);
+// router.get("/save/:id", cardModel.addSubSchema);
 router.get("/", cardModel.requestApi);
 router.get("/cards", cardModel.showAllCards);
-// router.get("/save/:id", collectionsCtrl.showMyCollection); //saveCards);
+router.post("/save", cardModel.saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 
 router.get(
