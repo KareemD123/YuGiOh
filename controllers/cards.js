@@ -10,23 +10,13 @@ module.exports = {
 
 function requestApi(req, res, next) {
   request(
-    "https://db.ygoprodeck.com/api/v7/cardinfo.php?level=4&attribute=water&sort=atk",
+    "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip",
     function (err, req, body) {
       if (err) {
         return err;
       }
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
-      // console.log(req3);
-      // req3.forEach(function (name) {
-      //   console.log(name.name);
-      // });
-      // Cards.find({}, function (err, cards) {
-      //   console.log(req3);
-      //   if (err) console.log(err);
-      //   if (cards) {
-      //     res.render("show", { cards });
-      //   } else {
       req3.forEach(function (name) {
         // console.log(name.card_images);
         let imageurl = name.card_images;
@@ -40,22 +30,16 @@ function requestApi(req, res, next) {
           level: name.level,
           image: name.card_images[0].image_url,
         });
-
-        res.render("home");
+        res.render("home", {
+          students,
+          user: req.user,
+          name: req.query.name,
+          sortKey,
+        });
       });
     }
   );
 }
-
-//         }
-//       });
-//     }
-//   );
-// }
-
-// res.render("show", {cards});
-// console.log(req2.data);
-// console.log(name.name);
 
 function showAllCards(req, res) {
   console.log("hello2");
@@ -63,7 +47,7 @@ function showAllCards(req, res) {
     if (err) {
       return err;
     } else {
-      console.log(cards);
+      // console.log(cards);
       res.render("cards/index.ejs", { cards });
     }
   });

@@ -3,6 +3,7 @@ var router = express.Router();
 var cardsCtrl = require("../controllers/cards");
 var collectionsCtrl = require("../controllers/collections");
 const passport = require("passport");
+var cardModel = require("../models/card");
 
 const request = require("request");
 
@@ -10,10 +11,10 @@ const request = require("request");
 // router.get("/", function (req, res, next) {
 //   res.render("index", { title: "Express" });
 // });
-
+router.get("/save/:id", cardModel.addSubSchema);
 router.get("/", cardsCtrl.requestApi);
 router.get("/cards", cardsCtrl.showAllCards);
-router.get("/save/:id", collectionsCtrl.saveCards);
+// router.get("/save/:id", collectionsCtrl.showMyCollection); //saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 
 router.get(

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const cards = new Schema({
+const cardSchema = new Schema({
   name: String,
   id: String,
   level: Number,
@@ -19,7 +19,7 @@ const myCollection = new Schema({
   // def: Number,
   // Type: String,
   // image: String,
-  cards: [cards],
+  cards: [cardSchema],
 });
 
 const userLogin = new Schema({
@@ -30,9 +30,33 @@ const userLogin = new Schema({
   cardcollection: [myCollection],
 });
 
+const cardModel = mongoose.model("card", cardSchema);
+const collectionModel = mongoose.model("MyCollection", myCollection);
 //Type vs Race
 
-module.exports = mongoose.model("card", cards);
+function addSubSchema(req, res, next) {
+  const newCollectionModel = new collectionModel();
+  const newCollectionEntry = newCollectionModel.cards.push({
+    name: "Hello",
+  });
+  newCollectionModel.save((err, data) => {
+    console.log("this is the data: " + data);
+    if (err) return err;
+  });
+  let req4 = JSON.stringify(req.body);
+  let req5 = req4.data;
+  console.log("this is the req4: " + req4);
+  console.log("this is the reqbody: " + req5);
+  console.log("this is new collectionmodel " + newCollectionModel);
+  let newColModel = [newCollectionModel];
+  console.log("this is newcol model 0: " + newColModel[0]);
+  res.render("cards/mycollection.ejs", { newColModel });
+}
+
+module.exports = {
+  cardModel,
+  addSubSchema,
+};
 
 // module.exports = mongoose.model("MyCollection", myCollection);
 // module.exports = mongoose.model("UserLogin", userLogin);
