@@ -101,26 +101,26 @@ function requestApi(req, res, next) {
 // name: req.query.name,
 // sortKey,
 
-function showAllCards(req, res) {
-  console.log("hello2");
-  Cards.find({}, function (err, cards) {
-    if (err) {
-      return req.next(err);
-    } else {
-      // console.log(cards);
-      res.render("cards/index.ejs", { cards });
-    }
-  });
-}
+// function showAllCards(req, res) {
+//   console.log("hello2");
+//   Collection.find({}, function (err, cards) {
+//     if (err) {
+//       return req.next(err);
+//     } else {
+//       // console.log(cards);
+//       res.render("cards/index.ejs", { cards });
+//     }
+//   });
+// }
 
 async function saveCards(req, res) {
   console.log("this is the reqid: " + req.body.name);
   let cards;
   try {
+    Collection.create({ id: 0 });
     let collection = await Collection.findOne({ id: 0 });
     // if (Collection.empty) {
     //   console.log("collection is empty");
-    //   // Collection.create({ id: 0 });
     // }
     console.log(collection);
     // let card_obj = [];
@@ -152,7 +152,7 @@ async function saveCards(req, res) {
 // };
 module.exports = {
   addSubSchema,
-  showAllCards,
+  // showAllCards,
   requestApi,
   saveCards,
   Collection,

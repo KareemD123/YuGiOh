@@ -13,7 +13,7 @@ const request = require("request");
 // });
 // router.get("/save/:id", cardModel.addSubSchema);
 router.get("/", cardModel.requestApi);
-router.get("/cards", cardModel.showAllCards);
+router.get("/cards", cardModel.requestApi);
 router.post("/save", cardModel.saveCards);
 router.get("/myCollection", collectionsCtrl.showMyCollection);
 
