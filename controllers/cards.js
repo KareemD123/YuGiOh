@@ -62,6 +62,7 @@ function showAllCards(req, res) {
     if (err) {
       return err;
     } else {
+      console.log(cards);
       res.render("cards/index.ejs", { cards });
     }
   });

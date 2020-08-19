@@ -34,5 +34,5 @@ const userLogin = new Schema({
 
 module.exports = mongoose.model("card", cards);
 
-module.exports = mongoose.model("MyCollection", myCollection);
-module.exports = mongoose.model("UserLogin", userLogin);
+// module.exports = mongoose.model("MyCollection", myCollection);
+// module.exports = mongoose.model("UserLogin", userLogin);

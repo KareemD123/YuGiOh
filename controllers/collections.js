@@ -34,5 +34,8 @@ function saveCards(req, res) {
   //     res.render("cards/mycollection", { cards });
   //   }
   // });
-  res.render("cards/mycollection", { cards });
+  res.render(
+    "cards/mycollection" //, { cards });
+    // }
+  );
 }
