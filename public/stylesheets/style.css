@@ -7,8 +7,9 @@ a {
   color: #00b7ff;
 }
 
-div {
+img {
   display: inline;
-  padding: 50px;
-  margin: 100px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
 }
