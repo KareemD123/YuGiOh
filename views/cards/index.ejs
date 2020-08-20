@@ -8,6 +8,12 @@
     <h1>Cards of the Day!</h1>
     <p>Hello these are the cards for today!</p>
     <p>These are the cards you have saved in your collection!</p>
+    <form method="GET" action="/home">
+      <button>Main Page</button>
+      </form>
+      <form method="GET" action="/myCollection">
+        <button>My Collection</button>
+      </form>
     <% displayCards.forEach(function(c){ %>
       <!-- <div id="image">
         <!-- <td><%= c._id %></td>

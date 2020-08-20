@@ -14,18 +14,3 @@ function showMyCollection(req, res) {
     res.render("cards/mycollection.ejs", { myCards });
   });
 }
-
-// function saveCards(req, res) {
-//   console.log(req.params.id);
-//   // mySeparateCollection.create({ _id: req.params.id }, function (err) {
-//   //   if (err) {
-//   //     console.log("im the error");
-//   //     return err;
-//   //   }
-//   // });
-//   // Cards.findById({ _id: req.params.id }, function (err, myCards) {
-//   //   console.log("i am rendering...");
-//   //   console.log(myCards);
-//   //   res.render("cards/mycollection.ejs", { myCards });
-//   });
-// }
