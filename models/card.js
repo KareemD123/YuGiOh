@@ -143,6 +143,10 @@ async function saveCards(req, res) {
   res.render("cards/mycollection.ejs", { cards });
 }
 
+function deleteCard(req, res) {
+  console.log(req.body);
+}
+
 // collection.find({}, function (err, collection) {
 //   console.log("this is my collection: " + collection);
 // });
@@ -156,6 +160,7 @@ module.exports = {
   requestApi,
   saveCards,
   Collection,
+  deleteCard,
 };
 // module.exports = mongoose.model("MyCollection", myCollection);
 // module.exports = mongoose.model("UserLogin", userLogin);
