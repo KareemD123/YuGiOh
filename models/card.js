@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const request = require("request");
+const { json } = require("express");
 
 const cardSchema = new Schema({
   name: String,
@@ -29,7 +30,7 @@ const userLogin = new Schema({
 // module.exports = mongoose.model("mySeparateCollection", mySeparateCollection);
 
 // const Cards = mongoose.model("Cards", cardSchema);
-const Collection = mongoose.model("MyCollection", myCollection);
+const Collection = mongoose.model("Collection", myCollection);
 //Type vs Race
 // let mySepCol = mongoose.model("mySepCol", mySeparateCollection);
 // let mySepCol2 = new mySepCol();
@@ -117,12 +118,12 @@ async function saveCards(req, res) {
   console.log("this is the reqid: " + req.body.name);
   let cards;
   try {
-    Collection.create({ id: 0 });
     let collection = await Collection.findOne({ id: 0 });
-    // if (Collection.empty) {
-    //   console.log("collection is empty");
-    // }
-    console.log(collection);
+    console.log("this is my collection: " + collection);
+    if (!collection) {
+      let result = await Collection.create({ id: 0 });
+      collection = await Collection.findOne({ id: 0 });
+    }
     // let card_obj = [];
     card_obj = {
       name: req.body.name,
@@ -143,29 +144,48 @@ async function saveCards(req, res) {
   res.render("cards/mycollection.ejs", { cards });
 }
 
-function deleteCard(req, res) {
-  Collection.deleteOne(req.params.id);
-  console.log("this is theeee reqbody: " + req.params);
+async function deleteCard(req, res, next) {
+  try {
+    let collection = await Collection.findOne({ id: 0 });
+    let myArray = collection.cards;
+    console.log("this is myArray: " + myArray);
+    myArray.forEach(function (m, idx) {
+      if (m._id == req.body._id) {
+        myArray.splice(idx, 1);
+        collection.cards.splice(idx, 1);
+      }
+    });
+    await collection.save();
+    console.log("this is myArray2: " + myArray);
+    // let result = await myArray.deleteById({ _id: req.body._id });
+    // let result2 = JSON.stringify(result);
+    // console.log("this is my result: " + result2);
+  } catch (error) {
+    console.log("error=" + error);
+  }
+
+  // let collection = await Collection.find({});
+  // try {
+  //   cards = collection.cards;
+  //   // cards.deleteOne(req.body.id);
+  //   console.log(collection);
+  console.log("this is theeee mongoid: " + req.body._id);
+  // console.log("this is theeee reqbodyname: " + req.body.name);
+  //   console.log(collection.cards);
+  // } catch (error) {
+  //   console.log("error=" + error);
+  // }
   res.redirect("../home");
 }
 
-// collection.find({}, function (err, collection) {
-//   console.log("this is my collection: " + collection);
-// });
-
-// module.exports = {
-//   Cards,
-// };
 function goHome(req, res) {
   res.render("home");
 }
 
-function showMyCollection(req, res) {
-  let cards;
-  cards = collection.cards;
-  // Collection.find({}, function (err, myCards) {
-  //   if (err) return err;
-  //   // console.log(cards);
+async function showMyCollection(req, res) {
+  let collection = await Collection.findOne({ id: 0 });
+  console.log(collection.cards);
+  var cards = collection.cards;
   res.render("cards/mycollection.ejs", { cards });
 }
 

@@ -9,6 +9,9 @@
     <form method="GET" action="/cards">
     <button>Go Back to Card List </button>
     </form>
+    <form method="GET" action="/home">
+      <button>Main Page</button>
+      </form>
     <p>These are the cards you have saved in your collection!</p>
     <% cards.forEach(function(c){ %>
       <form method="POST" action="/delete/?_method=DELETE">
@@ -19,6 +22,7 @@
         <input name="def" value="<%= c.def %>" type="hidden">
         <input name="type" value="<%= c.type %>" type="hidden">
         <input name="level" value="<%= c.level %>" type="hidden">
+        <input name="_id" value="<%= c._id %>" type="hidden">
         <div id="image">
           <img src="<%= c.image %>" />
           <button type="Submit">Delete Card from your Collection</button>
