@@ -27,13 +27,8 @@ const userLogin = new Schema({
   cardcollection: [myCollection],
 });
 
-// module.exports = mongoose.model("mySeparateCollection", mySeparateCollection);
-
 // const Cards = mongoose.model("Cards", cardSchema);
 const Collection = mongoose.model("Collection", myCollection);
-//Type vs Race
-// let mySepCol = mongoose.model("mySepCol", mySeparateCollection);
-// let mySepCol2 = new mySepCol();
 
 function addSubSchema(req, res, next) {
   const newCollectionModel = new collectionModel();

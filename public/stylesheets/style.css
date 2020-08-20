@@ -8,9 +8,29 @@ a {
   color: #00b7ff;
 }
 
+#outerimage {
+  display: flex;
+  justify-content: center;
+}
+
+#image {
+  flex-direction: row;
+  padding: 5px;
+}
+
 img {
-  display: inline;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
+  max-width: 250px;
+}
+
+img:hover {
+  animation: bigger 1s ease forwards;
+}
+
+@keyframes bigger {
+  from {
+    max-width: 250px;
+  }
+  to {
+    max-width: 450px;
+  }
 }

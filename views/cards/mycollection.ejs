@@ -13,6 +13,7 @@
       <button>Main Page</button>
       </form>
     <p>These are the cards you have saved in your collection!</p>
+    <div id="outerimage">
     <% cards.forEach(function(c){ %>
       <form method="POST" action="/delete/?_method=DELETE">
         <input name="name" value="<%= c.name %>" type="hidden">
@@ -27,6 +28,7 @@
           <img src="<%= c.image %>" />
           <button type="Submit">Delete Card from your Collection</button>
         </div>
+      </div>
       </form>
       <% }); %>
   
