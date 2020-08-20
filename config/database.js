@@ -9,12 +9,6 @@ mongoose.connect(
   }
 );
 
-// mongoose.connect("mongodb://localhost/YuGiOh", {
-//   useNewUrlParser: true,
-//   useCreateIndex: true,
-//   useUnifiedTopology: true,
-// });
-
 var db = mongoose.connection;
 
 db.on("connected", function () {
