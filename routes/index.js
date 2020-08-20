@@ -14,6 +14,7 @@ const request = require("request");
 // router.get("/save/:id", cardModel.addSubSchema);
 router.get("/", cardModel.requestApi);
 router.get("/cards", cardModel.requestApi);
+router.post("/cards/request", cardModel.requestApi2);
 router.post("/save", cardModel.saveCards);
 router.delete("/delete", cardModel.deleteCard);
 router.get("/myCollection", cardModel.showMyCollection);

@@ -14,6 +14,11 @@
       <form method="GET" action="/myCollection">
         <button>My Collection</button>
       </form>
+      <form method="POST" action="/cards/request">
+        <input type="text" name="search_name" value="" placeholder="Search for Cards..." autocomplete = "off">
+        <button type="submit">Filter Cards</button>
+      </input>
+      </form>
     <% displayCards.forEach(function(c){ %>
       <!-- <div id="image">
         <!-- <td><%= c._id %></td>

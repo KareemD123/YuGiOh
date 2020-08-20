@@ -57,20 +57,12 @@ function requestApi(req, res, next) {
   request(
     "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip",
     function (err, req, body) {
-      console.log("1: " + err);
-      // if (err) {
-      //   return req.next(err);
-      // }
-      console.log("2: " + err);
       let req2 = JSON.parse(req.body);
       let req3 = req2.data;
       let displayCards = [];
       req3.forEach(function (name) {
         let imageurl = name.card_images;
         let textimageurl = imageurl[0].image_url;
-        // let newCard = new cardModel();
-        // console.log("this is the name: " + name.name);
-
         incomingCard = {
           name: name.name,
           id: name.id,
@@ -80,9 +72,7 @@ function requestApi(req, res, next) {
           level: name.level,
           image: name.card_images[0].image_url,
         };
-        // console.log(displayCards);
         displayCards.push(incomingCard);
-        // let arrayDisplayCards = [displayCards];
       });
       res.render("cards/index.ejs", { displayCards });
     }
@@ -158,12 +148,6 @@ async function deleteCard(req, res, next) {
   } catch (error) {
     console.log("error=" + error);
   }
-
-  // let collection = await Collection.find({});
-  // try {
-  //   cards = collection.cards;
-  //   // cards.deleteOne(req.body.id);
-  //   console.log(collection);
   console.log("this is theeee mongoid: " + req.body._id);
   // console.log("this is theeee reqbodyname: " + req.body.name);
   //   console.log(collection.cards);
@@ -184,6 +168,37 @@ async function showMyCollection(req, res) {
   res.render("cards/mycollection.ejs", { cards });
 }
 
+function requestApi2(req, res, next) {
+  // let req2 = JSON.parse(req.body);
+  // let req3 = req2.data;
+  // let displayCards = [];
+  // let imageurl = name.card_images;
+  // let textimageurl = imageurl[0].image_url;
+  console.log("this is the reqbodyname: " + req.body.search_name);
+  let hi = "hi";
+  let requestUrl = "Hello" + hi;
+  console.log("this is the request url: " + requestUrl);
+  // request(
+  //   "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip",
+  //   function (err, req, body) {
+  //     req3.forEach(function (name) {
+  //       incomingCard = {
+  //         name: name.name,
+  //         id: name.id,
+  //         atk: name.atk,
+  //         def: name.def,
+  //         Type: name.race,
+  //         level: name.level,
+  //         image: name.card_images[0].image_url,
+  //       };
+  //       displayCards.push(incomingCard);
+  //     });
+  //     res.render("cards/index.ejs", { displayCards });
+  //     res.render("home");
+  //   }
+  // );
+}
+
 module.exports = {
   addSubSchema,
   // showAllCards,
@@ -193,6 +208,7 @@ module.exports = {
   Collection,
   deleteCard,
   goHome,
+  requestApi2,
 };
 // module.exports = mongoose.model("MyCollection", myCollection);
 // module.exports = mongoose.model("UserLogin", userLogin);
