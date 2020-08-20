@@ -1,3 +1,41 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      padding: 50px;
+      font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+      background-color: burlywood;
+      margin-left: 10%;
+      background-image: url("https://www.lefthudson.com/wp-content/uploads/2019/11/ygo-backgrounds-fresh-yu-gi-oh-line-backgrounds-and-sleeves-projects-ygopro-forum-desktop-background-this-month-of-ygo-backgrounds.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      color: gold;
+      font-weight: bold;
+    }
+    button {
+      margin: 5px;
+      font-size: 100%;
+      width: 200px;
+      height: 35px;
+      font-weight: bold;
+      color: gold;
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSCaT_X5-qnB11YhSo1LcYCC3vBpflpGOmKww&usqp=CAU");
+      background-size: cover;
+    }
+  </style>
+  <body>
+    <h1>ERROR!!!</h1>
+    <p>Your search returned no results :/ Try another search!</p>
+    <form method="GET" action="/cards">
+      <button>Go Back to Card List</button>
+    </form>
+    <form method="Get" action="/home">
+      <button>Main Page</button>
+    </form>
+  </body>
+</html>

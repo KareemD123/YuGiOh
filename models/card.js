@@ -193,21 +193,25 @@ function requestApi2(req, res, next) {
     let req2 = JSON.parse(req.body);
     let req3 = req2.data;
     let displayCards = [];
-    req3.forEach(function (name) {
-      let imageurl = name.card_images;
-      let textimageurl = imageurl[0].image_url;
-      incomingCard = {
-        name: name.name,
-        id: name.id,
-        atk: name.atk,
-        def: name.def,
-        Type: name.race,
-        level: name.level,
-        image: name.card_images[0].image_url,
-      };
-      displayCards.push(incomingCard);
-    });
-    res.render("cards/index.ejs", { displayCards });
+    if (req3 == undefined) {
+      res.render("error");
+    } else {
+      req3.forEach(function (name) {
+        let imageurl = name.card_images;
+        let textimageurl = imageurl[0].image_url;
+        incomingCard = {
+          name: name.name,
+          id: name.id,
+          atk: name.atk,
+          def: name.def,
+          Type: name.race,
+          level: name.level,
+          image: name.card_images[0].image_url,
+        };
+        displayCards.push(incomingCard);
+      });
+      res.render("cards/index.ejs", { displayCards });
+    }
   });
 }
 
