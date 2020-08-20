@@ -170,9 +170,23 @@ async function showMyCollection(req, res) {
 
 function requestApi2(req, res, next) {
   console.log("this is the reqbodysearch: " + req.body.search);
-  let search = req.body.search;
+  let search = `${req.body.search}`;
+  let finalsearch = [...search];
+  function filterArr(arr) {
+    newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] !== ",") {
+        newArr.push(arr[i]);
+      }
+    }
+    finalArr = newArr.join("");
+    console.log(finalArr);
+    return finalArr;
+  }
+  let finalsearchquery = filterArr(finalsearch);
+  console.log("this is finalsearch: " + finalsearchquery);
   let requestUrl =
-    "https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=" + search;
+    "https://db.ygoprodeck.com/api/v7/cardinfo.php?fname=" + finalsearchquery;
   console.log("this is the request url: " + requestUrl);
   request(requestUrl, function (err, req, body) {
     let req2 = JSON.parse(req.body);

@@ -17,15 +17,15 @@
     <button>My Collection</button>
   </form>
   <form method="POST" action="/cards/request">
-    <input type="text" name="search" value="" placeholder="Search by Card Name..." autocomplete="off">
+    <input type="text" name="search" placeholder="Search by Card Name..." autocomplete="off">
     </input>
 
-    <input type="number" name="search" value="" placeholder="Search by Level..." autocomplete="off">
+    <!-- <input type="number" name="searchlevel" placeholder="Search by Level..." autocomplete="off">
     </input>
 
-    <input list="list1" type="text" name="search" value="" placeholder="Search by Type..." autocomplete="off"><datalist
+    <input list="list1" type="text" name="searchtype" placeholder="Search by Type..." autocomplete="off"><datalist
       id="list1">
-      <option value="Effect Monster">
+      <option value="type=Effect Monster">
       <option value="Flip Effect Monster">
       <option value="Flip Tuner Effect Monster">
       <option value="Gemini Monster">
@@ -55,7 +55,7 @@
     </datalist>
     </input>
 
-    <input list="list2" type="text" name="search" value="" placeholder="Search by Race..." autocomplete="off"><datalist
+    <input list="list2" type="text" name="searchrace" placeholder="Search by Race..." autocomplete="off"><datalist
       id="list2">
       <option value="Aqua">
       <option value="Beast">
@@ -97,11 +97,11 @@
       <option value="Quick-Play
             ">
       <option value="Ritual">
-      <option value="Counter">
-
+      <option value="Counter"> -->
+<!-- 
       </option>
-    </datalist>
-    </input>
+    </datalist> -->
+    <!-- </input> -->
     <button type="submit">Filter Cards</button>
   </form>
   <% displayCards.forEach(function(c){ %>
