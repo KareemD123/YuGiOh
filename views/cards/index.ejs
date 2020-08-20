@@ -7,9 +7,8 @@
 </head>
 
 <body>
-  <h1>Cards of the Day!</h1>
-  <p>Hello these are the cards for today!</p>
-  <p>These are the cards you have saved in your collection!</p>
+  <h1><b>Choose your cards!</b></h1>
+  <p>This the the YuGiOh Cards list!</p>
   <form method="GET" action="/home">
     <button>Main Page</button>
   </form>
@@ -123,7 +122,7 @@
     <input name="def" value="<%= c.def %>" type="hidden">
     <input name="type" value="<%= c.type %>" type="hidden">
     <input name="level" value="<%= c.level %>" type="hidden">
-    <div id="image">
+    <div>
       <img src="<%= c.image %>" />
       <button type="Submit">Save to your Collection</button>
     </div>

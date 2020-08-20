@@ -54,29 +54,30 @@ function addSubSchema(req, res, next) {
 }
 
 function requestApi(req, res, next) {
-  request(
-    "https://db.ygoprodeck.com/api/v7/cardinfo.php?type=spell%20card&race=equip",
-    function (err, req, body) {
-      let req2 = JSON.parse(req.body);
-      let req3 = req2.data;
-      let displayCards = [];
-      req3.forEach(function (name) {
-        let imageurl = name.card_images;
-        let textimageurl = imageurl[0].image_url;
-        incomingCard = {
-          name: name.name,
-          id: name.id,
-          atk: name.atk,
-          def: name.def,
-          Type: name.race,
-          level: name.level,
-          image: name.card_images[0].image_url,
-        };
-        displayCards.push(incomingCard);
-      });
-      res.render("cards/index.ejs", { displayCards });
-    }
-  );
+  request("https://db.ygoprodeck.com/api/v7/cardinfo.php?level=10", function (
+    err,
+    req,
+    body
+  ) {
+    let req2 = JSON.parse(req.body);
+    let req3 = req2.data;
+    let displayCards = [];
+    req3.forEach(function (name) {
+      let imageurl = name.card_images;
+      let textimageurl = imageurl[0].image_url;
+      incomingCard = {
+        name: name.name,
+        id: name.id,
+        atk: name.atk,
+        def: name.def,
+        Type: name.race,
+        level: name.level,
+        image: name.card_images[0].image_url,
+      };
+      displayCards.push(incomingCard);
+    });
+    res.render("cards/index.ejs", { displayCards });
+  });
 }
 
 // function (err) {
