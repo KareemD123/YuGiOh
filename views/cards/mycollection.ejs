@@ -11,7 +11,7 @@
     </form>
     <p>These are the cards you have saved in your collection!</p>
     <% cards.forEach(function(c){ %>
-      <form method="POST" action="/delete">
+      <form method="POST" action="/delete/?_method=DELETE">
         <input name="name" value="<%= c.name %>" type="hidden">
         <input name="id" value="<%= c.id %>" type="hidden">
         <input name="image" value="<%= c.image %>" type="hidden">

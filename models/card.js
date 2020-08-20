@@ -144,7 +144,9 @@ async function saveCards(req, res) {
 }
 
 function deleteCard(req, res) {
-  console.log(req.body);
+  Collection.deleteOne(req.params.id);
+  console.log("this is theeee reqbody: " + req.params);
+  res.redirect("../home");
 }
 
 // collection.find({}, function (err, collection) {
@@ -154,13 +156,28 @@ function deleteCard(req, res) {
 // module.exports = {
 //   Cards,
 // };
+function goHome(req, res) {
+  res.render("home");
+}
+
+function showMyCollection(req, res) {
+  let cards;
+  cards = collection.cards;
+  // Collection.find({}, function (err, myCards) {
+  //   if (err) return err;
+  //   // console.log(cards);
+  res.render("cards/mycollection.ejs", { cards });
+}
+
 module.exports = {
   addSubSchema,
   // showAllCards,
+  showMyCollection,
   requestApi,
   saveCards,
   Collection,
   deleteCard,
+  goHome,
 };
 // module.exports = mongoose.model("MyCollection", myCollection);
 // module.exports = mongoose.model("UserLogin", userLogin);

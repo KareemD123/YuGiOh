@@ -15,8 +15,9 @@ const request = require("request");
 router.get("/", cardModel.requestApi);
 router.get("/cards", cardModel.requestApi);
 router.post("/save", cardModel.saveCards);
-// router.post("/delete", cardModel.deleteCard);
-router.get("/myCollection", collectionsCtrl.showMyCollection);
+router.delete("/delete", cardModel.deleteCard);
+router.get("/myCollection", cardModel.showMyCollection);
+router.get("/home", cardModel.goHome);
 
 router.get(
   "/auth/google",
