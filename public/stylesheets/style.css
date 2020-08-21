@@ -22,11 +22,6 @@ p {
   font-size: 28px;
 }
 
-/* #outerimage {
-  /* display: flex;
-  justify-content: center; */
-/* } */
-
 form {
   display: inline;
 }
@@ -39,8 +34,6 @@ button {
   font-weight: bold;
   color: gold;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSCaT_X5-qnB11YhSo1LcYCC3vBpflpGOmKww&usqp=CAU");
-  /* background-size: cover; */
-  /* background-color: khaki; */
 }
 
 input {

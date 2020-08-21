@@ -8,10 +8,11 @@ module.exports = {
   deleteCard,
   goHome,
   requestApi2,
+  deleteTest,
 };
 
 function requestApi(req, res, next) {
-  request("https://db.ygoprodeck.com/api/v7/cardinfo.php?level=10", function (
+  request("https://db.ygoprodeck.com/api/v7/cardinfo.php?level=12", function (
     err,
     req,
     body
@@ -63,6 +64,17 @@ async function saveCards(req, res) {
     console.log("error=" + error);
   }
   res.render("cards/mycollection.ejs", { cards });
+}
+
+async function deleteTest(req, res, next) {
+  try {
+    console.log(req.params._id);
+    await Collection.remove({ _id: req.params._id });
+    res.redirect("/home");
+  } catch (err) {
+    console.log(err);
+    return res.render("error");
+  }
 }
 
 async function deleteCard(req, res, next) {
