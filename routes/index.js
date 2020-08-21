@@ -3,7 +3,7 @@ var router = express.Router();
 var cardsCtrl = require("../controllers/cards");
 const request = require("request");
 
-router.get("/", cardsCtrl.requestApi);
+router.get("/", cardsCtrl.goHome);
 router.get("/cards", cardsCtrl.requestApi);
 router.post("/cards/request", cardsCtrl.requestApi2);
 router.post("/save", cardsCtrl.saveCards);
